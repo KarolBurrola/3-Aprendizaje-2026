@@ -7,12 +7,13 @@
       
 """
 
-__author__ = "Julio Waissman"
-__date__ = "enero 2025"
+__author__ = "Karol Burrola"
+__date__ = "febrero 2026"
 
 
 import math
 from collections import Counter
+import random
 
 def entrena_arbol(datos, target, clase_default, 
                   max_profundidad=None, acc_nodo=1.0, min_ejemplos=0,
@@ -60,9 +61,15 @@ def entrena_arbol(datos, target, clase_default,
         clases.most_common(1)[0][1] / len(datos) >= acc_nodo):
         
         return NodoN(terminal=True, clase_default=clase_default)
+
+    if isinstance(variables_seleccionadas, int):
+        n = min(variables_seleccionadas, len(atributos))
+        atributosev = random.sample(atributos, n)
+    else:
+        atributosev = atributos
     
     variable, valor = selecciona_variable_valor(
-        datos, target, atributos
+        datos, target, atributosev
     )
     nodo = NodoN(
         terminal=False, 
