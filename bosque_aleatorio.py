@@ -31,3 +31,15 @@ def predice_instancia_ba(arbolesb, instancia):
     return resp
 
 
+def predice_bosque_al(arbolesb, datos):
+    predi = [predice_instancia_ba(arbolesb, registro) for registro in datos]
+
+    return predi
+
+
+def evalua_bosque_al(arbolesb, datos, target):
+    prediccion = predice_bosque_al(arbolesb, datos)
+    prediccioncor = sum(1 for pred, real in zip(prediccion, datos) if pred == real[target])
+    exactitud = prediccioncor / len(datos)
+
+    return exactitud
