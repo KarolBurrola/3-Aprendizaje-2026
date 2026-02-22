@@ -54,3 +54,34 @@ for num_arb in lista:
     )
     exactitudbos = ba.evalua_bosque_al(bosque_actual, dvalidacion, target)
     print(f"Bosque aleatorio con {num_arb:3} árboles | Exactitud: {exactitudbos:.4f}")
+
+
+print("\nPrueba 2: Analizando la profundidad máxima de los árboles")
+
+listaprofundidad = [3,6,12,None]
+for profundidad in listaprofundidad:
+    bosque_actual = ba.entrena_bosque_al(
+        dentrenamiento,
+        target,
+        clase_default=0,
+        m_subconjuntos=50,
+        variables_por_nodo=5,
+        max_profundidad=profundidad
+    )
+    exactitudbos = ba.evalua_bosque_al(bosque_actual, dvalidacion, target)
+    print(f"Bosque aleatorio con profundidad {str(profundidad):4} | Exactitud: {exactitudbos:.4f}")
+
+print("\nPrueba 3: Cantidad de variables a considerar en cada nodo")
+
+listadov = [3, 6, 9, 12, 14]
+for num_vars in listadov:
+    bosque_actual = ba.entrena_bosque_al(
+        dentrenamiento,
+        target,
+        clase_default=0,
+        m_subconjuntos=50,
+        variables_por_nodo=num_vars,
+        max_profundidad=5
+    )
+    exactitudbos = ba.evalua_bosque_al(bosque_actual, dvalidacion, target)
+    print(f"Bosque aleatorio con {num_vars:2} variables   | Exactitud: {exactitudbos:.4f}")
