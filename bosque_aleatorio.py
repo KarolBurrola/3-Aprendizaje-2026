@@ -26,8 +26,8 @@ def predice_instancia_ba(arbolesb, instancia):
 
     pred = [arbol.predice(instancia) for arbol in arbolesb]
     counter = Counter(pred)
-    com = counter.most_common(1)[0][0]
+    resp = counter.most_common(1)[0][0]
 
-    return com
+    return resp
 
 
