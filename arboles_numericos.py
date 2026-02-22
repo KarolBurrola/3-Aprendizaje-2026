@@ -203,7 +203,7 @@ def ganancia_informacion(datos, target, atributo, valor, entropia):
     ganancia: float
         La ganancia de información del atributo dividiendo en ese valor
     """
-    
+
     datos_menor = [d for d in datos if d[atributo] < valor]
     datos_mayor = [d for d in datos if d[atributo] >= valor]
     
